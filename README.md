@@ -1,2 +1,7 @@
 # cursed-sex-dungeon
-go into a cursed sex dungeon and kill the lich
+
+https://dan-q.github.io/twee2/tutorial.html
+
+```
+twee2 watch main.tw2 index.html --format=SugarCube2
+```

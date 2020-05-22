@@ -1,0 +1,11 @@
+::Start
+You are a lone adventurer, ready to take on the dungeon and kill the evil lich.
+
+[[Knight->Floor 1 Start][$class to "knight"]] - You're here on behalf of your village. The Lich might wield powerful magic, but you have sharpened steel and iron resolve.
+
+[[Alchemist->Floor 1 Start][$class to "alchemist"]] - Start with... uh, potion stuff. A ton of consumables. No equipment. Other than the bottle of alcohol. *good shit*
+Items: Bottle of Aqua Vitae, Health Potion, Curse Restore, Butthole Ointment
+
+[[Thief->Floor 1 Start][$class to "thief"]] - Lockpicks. Smoke bombs.
+
+[[Bard->Floor 1 Start][$class to "bard"]] - You're a jack of all trades.

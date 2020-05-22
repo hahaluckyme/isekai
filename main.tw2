@@ -1,0 +1,26 @@
+::StoryTitle
+Cursed Sex Dungeon
+
+::StoryIFID[twee2]
+Twee2::build_config.story_ifid = 'a4cf8cc7-25cd-4adf-a99c-73d34f8485f9'
+
+::KeybindLinks [script]
+(() => {
+	$(document).on('keyup', (ev) => {
+    if (['1', '2', '3', '4', '5'].includes(ev.key)) {
+      const key = ev.key - '1';
+      const a_tags = $('.passage').find('a');
+      if (key < a_tags.length) {
+        a_tags[key].click();
+      }
+    } else if (ev.key === ',') {
+      $('#history-backward').click();
+    } else if (ev.key === '.') {
+      $('#history-forward').click();
+    }
+	});
+})();
+
+::StoryIncludes
+classes.tw2
+floor1.tw2

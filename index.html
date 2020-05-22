@@ -96,7 +96,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<p id="init-lacking">Apologies! You are using an <strong>outdated</strong> browser which lacks required capabilities. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<p id="init-loading">Initializing. Please wait&hellip;<br /><progress></progress></p>
 	</div>
-	<div id="store-area" hidden><tw-storydata name="Cursed Sex Dungeon" startnode="1" creator="Twee2" creator-version="0.5.0" ifid="a4cf8cc7-25cd-4adf-a99c-73d34f8485f9" format="SugarCube2" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
+	<div id="store-area" hidden><tw-storydata name="Cursed Sex Dungeon" startnode="2" creator="Twee2" creator-version="0.5.0" ifid="a4cf8cc7-25cd-4adf-a99c-73d34f8485f9" format="SugarCube2" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
 	$(document).on('keyup', (ev) => {
     if (['1', '2', '3', '4', '5'].includes(ev.key)) {
       const key = ev.key - '1';
@@ -111,17 +111,192 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
     }
 	});
 })();
-</script><tw-passagedata pid="1" name="Start" tags="" position="">You are a lone adventurer, ready to take on the dungeon and kill the evil lich.
+// test = 5;
+// console.log(setup);
+macros.RollFlee = {
+  handler: (place, macroName, params, parser) => {
+    const roll = Math.floor(Math.random() * 6) + 1;
+    state.active.variables.flee = roll;
+    new Wikifier(place, "You roll a " + roll);
+  },
+};
 
-[[Knight-&gt;Floor 1 Start][$class to "knight"]] - You're here on behalf of your village. The Lich might wield powerful magic, but you have sharpened steel and iron resolve.
+macros.Proceed = {
+  handler: (place, macroName, params, parser) => {
+    new Wikifier(place, "[[Next Room->Palace Room]]");
+  },
+};
 
-[[Alchemist-&gt;Floor 1 Start][$class to "alchemist"]] - Start with... uh, potion stuff. A ton of consumables. No equipment. Other than the bottle of alcohol. *good shit*
+macros.Inventory = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.inventory.forEach((item) => {
+      new Wikifier(place, item.name + '\n');
+    });
+  },
+};
+var CONSUMABLE_ITEMS, EQUIPPABLE_ITEMS, ITEMS;
+
+EQUIPPABLE_ITEMS = [
+  {
+    name: "Hat",
+    power: 1,
+    slot: "head",
+    desc: "It's real nifty!"
+  }, {
+    name: "Knife",
+    power: 1,
+    slot: "1 hand",
+    desc: "Good for stabbing and throwing!"
+  }, {
+    name: "Book",
+    power: 1,
+    slot: "1 hand",
+    desc: "A tome of knowledge."
+  }, {
+    name: "Lockpicks",
+    slot: "1 hand",
+    desc: "Opens a locked chest. 50% chance of breaking after use."
+  }, {
+    name: "Hemp Rope",
+    power: 1,
+    desc: "Smells like farm."
+  }
+];
+
+CONSUMABLE_ITEMS = [
+  {
+    name: "Smoke Bomb",
+    consumable: true,
+    desc: "Next flee is successful."
+  }, {
+    name: "Strength Potions",
+    power: 1,
+    desc: "Temporary Power buff."
+  }, {
+    name: "Curse Potion",
+    desc: "Removes 5 curse."
+  }, {
+    name: "Aqua Vitae",
+    power: 1,
+    desc: "Potion component. Combine with an herb to make a potion, or consume for temporary Power."
+  }
+];
+
+ITEMS = EQUIPPABLE_ITEMS.concat(CONSUMABLE_ITEMS);
+
+macros.Loot = {
+  handler: (place, macroName, params, parser) => {
+    const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
+    state.active.variables.inventory.push(item);
+    new Wikifier(place, "You find " + item.name);
+  },
+};
+
+macros.Gift = {
+  handler: (place, macroName, params, parser) => {
+    const item = ITEMS.find(i => i.name === params[0]);
+    console.log(item);
+    state.active.variables.inventory.push(item);
+    new Wikifier(place, "You receive " + item.name);
+  },
+};
+
+macros.Power = {
+  handler: (place, macroName, params, parser) => {
+    let power = 0;
+    state.active.variables.inventory.forEach((item) => {
+      power += item.power || 0;
+    });
+
+    state.active.variables.power = power;
+
+    new Wikifier(place, "Power: " + power);
+  },
+}
+</script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Inventory:
+&lt;&lt;Inventory&gt;&gt;
+&lt;&lt;Power&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">&lt;&lt;set $inventory = []&gt;&gt;
+You are a lone adventurer, ready to take on the dungeon and kill the evil lich.
+
+&lt;&lt;display "Classes"&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Classes" tags="" position="">[[Knight]] - You're here on behalf of your village. The Lich might wield powerful magic, but you have sharpened steel and iron resolve.
+
+[[Alchemist]] - Start with... uh, potion stuff. A ton of consumables. No equipment. Other than the bottle of alcohol. *good shit*
 Items: Bottle of Aqua Vitae, Health Potion, Curse Restore, Butthole Ointment
 
-[[Thief-&gt;Floor 1 Start][$class to "thief"]] - Lockpicks. Smoke bombs.
+[[Thief]] - Lockpicks. Smoke bombs.
 
-[[Bard-&gt;Floor 1 Start][$class to "bard"]] - You're a jack of all trades.</tw-passagedata><tw-passagedata pid="2" name="Floor 1 Start" tags="" position="">Hewwo
-$class</tw-passagedata></tw-storydata></div>
+[[Bard]] - You're a jack of all trades.</tw-passagedata><tw-passagedata pid="4" name="Knight" tags="" position="">&lt;&lt;Gift "Knife"&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Alchemist" tags="" position=""></tw-passagedata><tw-passagedata pid="6" name="Thief" tags="" position=""></tw-passagedata><tw-passagedata pid="7" name="Bard" tags="" position=""></tw-passagedata><tw-passagedata pid="8" name="Palace Room" tags="" position="">You are in a decadent palace-like floor.
+[[Example]]
+[[Dog Gang]]
+[[Ghost Library]]
+</tw-passagedata><tw-passagedata pid="9" name="Dog Gang" tags="" position="">Slipping past the open doorway, you stop dead in your tracks at the sight of three guards in armor. Tall and imposing, the creatures are humanoid, yet dog-like in appearance, with digitigrade legs, long, upturned tails, a drawn-forward snout, and pointed ears. You overhear them sharing lewd tales of taking advantage of the poor souls who've wandered through their master's dungeon. Try as you might to stay unseen, the perceptive guard dogs take notice of your entry almost immediately.
+
+"What do we have here?" one of the dogs barks out. The others share hearty laughs before turning to you with weapons raised. "Looks like we've got ourselves another adventurer. How about we show this twerp a lesson or two about barging in unannounced? I've been aching for another happy fuckpet to drool on my knot."
+
+Power: 12
+Flee: 4
+
+[[Fight them-&gt;Dog Gang Fight]]
+[[Present ass-&gt;Dog Gang Present ass]]</tw-passagedata><tw-passagedata pid="10" name="Dog Gang Fight" tags="" position="">The dogs start to circle you.
+
+&lt;&lt;if $power &gt;= 12&gt;&gt;
+  &lt;&lt;display "Dog Gang Win"&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;&lt;display "Dog Gang Lose"&gt;&gt;
+  &lt;&lt;RollFlee&gt;&gt;
+  &lt;&lt;if $flee &gt;= 4&gt;&gt;
+    &lt;&lt;display "Dog Gang Flee"&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;display "Dog Gang Bad"&gt;&gt;
+  &lt;&lt;endif&gt;&gt;
+&lt;&lt;endif&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Dog Gang Win" tags="" position="">You beat down the dogs, and they cower on the floor. You loot all three of their bodies.
+
+&lt;&lt;Loot&gt;&gt;
+&lt;&lt;Loot&gt;&gt;
+&lt;&lt;Loot&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Dog Gang Lose" tags="" position="">You lose the fight.</tw-passagedata><tw-passagedata pid="13" name="Dog Gang Flee" tags="" position="">You dive past the Dog Gang enemies. No looting.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="Dog Gang Bad" tags="" position="">You get your butthole raped and then are collared and enslaved as a pet, tossed around between the three guards.
+
+BEST ENDING</tw-passagedata><tw-passagedata pid="15" name="Dog Gang Present ass" tags="" position="">You turn around and show them your ass.
+
+Ruh-roh! You were knotted! Lose 3 turns. They spank you on your ass and send you away.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Ghost Library" tags="" position="">Ghost LIbrary</tw-passagedata><tw-passagedata pid="17" name="Ghost Library Fight" tags="" position="">Ghosts fight here.</tw-passagedata><tw-passagedata pid="18" name="Example" tags="" position="">You enter the example room. There are example enemies here.
+
+Power: 5
+Flee: 4
+
+[[Fight-&gt;Example Fight]]
+[[Alternate-&gt;Example Alternate]]
+[[(Condition) Use Item-&gt;Example Condition]]</tw-passagedata><tw-passagedata pid="19" name="Example Fight" tags="" position="">You fight some example enemies.
+
+&lt;&lt;if $power &gt;= 5&gt;&gt;
+  &lt;&lt;display "Example Fight Win"&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;&lt;display "Example Fight Lose"&gt;&gt;
+  &lt;&lt;RollFlee&gt;&gt;
+  &lt;&lt;if $flee &gt;= 4&gt;&gt;
+    &lt;&lt;display "Example Fight Flee"&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;display "Example Fight Bad"&gt;&gt;
+  &lt;&lt;endif&gt;&gt;
+&lt;&lt;endif&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Example Fight Win" tags="" position="">You win!
+
+&lt;&lt;Loot&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Example Fight Lose" tags="" position="">You lose the fight.</tw-passagedata><tw-passagedata pid="22" name="Example Fight Flee" tags="" position="">You dive past the example enemies. No looting.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Example Fight Bad" tags="" position="">You get raped by the example enemies.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Example Alternate" tags="" position="">You do an alternate solution.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Example Condition" tags="" position="">You offer the item for a conditional solution.
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata></tw-storydata></div>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS
 

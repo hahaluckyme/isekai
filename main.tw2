@@ -1,8 +1,9 @@
 ::StoryTitle
 Cursed Sex Dungeon
 
-::StoryIFID[twee2]
+::Configuration [twee2]
 Twee2::build_config.story_ifid = 'a4cf8cc7-25cd-4adf-a99c-73d34f8485f9'
+Twee2::build_config.story_format = 'SugarCube2'
 
 ::KeybindLinks [script]
 (() => {
@@ -21,6 +22,47 @@ Twee2::build_config.story_ifid = 'a4cf8cc7-25cd-4adf-a99c-73d34f8485f9'
 	});
 })();
 
+::Functions [script]
+// test = 5;
+// console.log(setup);
+
+
+::MainMacros [script]
+
+macros.RollFlee = {
+  handler: (place, macroName, params, parser) => {
+    const roll = Math.floor(Math.random() * 6) + 1;
+    state.active.variables.flee = roll;
+    new Wikifier(place, "You roll a " + roll);
+  },
+};
+
+macros.Proceed = {
+  handler: (place, macroName, params, parser) => {
+    new Wikifier(place, "[[Next Room->Palace Room]]");
+  },
+};
+
+macros.Inventory = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.inventory.forEach((item) => {
+      new Wikifier(place, item.name + '\n');
+    });
+  },
+};
+
+::StoryCaption
+Inventory:
+<<Inventory>>
+<<Power>>
+
+::Start
+<<set $inventory = []>>
+You are a lone adventurer, ready to take on the dungeon and kill the evil lich.
+
+<<display "Classes">>
+
 ::StoryIncludes
+items.tw2
 classes.tw2
-floor1.tw2
+floors.tw2

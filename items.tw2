@@ -1,0 +1,78 @@
+::Items [coffee script]
+
+EQUIPPABLE_ITEMS = [
+    name: "Hat"
+    power: 1
+    slot: "head"
+    desc: "It's real nifty!"
+  ,
+    name: "Knife"
+    power: 1
+    slot: "1 hand"
+    desc: "Good for stabbing and throwing!"
+  ,
+    name: "Book"
+    power: 1
+    slot: "1 hand"
+    desc: "A tome of knowledge."
+  ,
+    name: "Lockpicks"
+    slot: "1 hand"
+    desc: "Opens a locked chest. 50% chance of breaking after use."
+  ,
+    name: "Hemp Rope"
+    power: 1
+    desc: "Smells like farm."
+  ,
+]
+
+CONSUMABLE_ITEMS = [
+    name: "Smoke Bomb"
+    consumable: true
+    desc: "Next flee is successful."
+  ,
+    name: "Strength Potions"
+    power: 1
+    desc: "Temporary Power buff."
+  ,
+    name: "Curse Potion"
+    desc: "Removes 5 curse."
+  ,
+    name: "Aqua Vitae"
+    power: 1
+    desc: "Potion component. Combine with an herb to make a potion, or consume for temporary Power."
+  ,
+]
+
+ITEMS = EQUIPPABLE_ITEMS.concat(CONSUMABLE_ITEMS);
+
+::ItemMacros [script]
+macros.Loot = {
+  handler: (place, macroName, params, parser) => {
+    const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
+    state.active.variables.inventory.push(item);
+    new Wikifier(place, "You find " + item.name);
+  },
+};
+
+macros.Gift = {
+  handler: (place, macroName, params, parser) => {
+    const item = ITEMS.find(i => i.name === params[0]);
+    console.log(item);
+    state.active.variables.inventory.push(item);
+    new Wikifier(place, "You receive " + item.name);
+  },
+};
+
+macros.Power = {
+  handler: (place, macroName, params, parser) => {
+    let power = 0;
+    state.active.variables.inventory.forEach((item) => {
+      power += item.power || 0;
+    });
+
+    state.active.variables.power = power;
+
+    new Wikifier(place, "Power: " + power);
+  },
+}

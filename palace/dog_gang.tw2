@@ -1,0 +1,55 @@
+
+::Dog Gang
+Slipping past the open doorway, you stop dead in your tracks at the sight of three guards in armor. Tall and imposing, the creatures are humanoid, yet dog-like in appearance, with digitigrade legs, long, upturned tails, a drawn-forward snout, and pointed ears. You overhear them sharing lewd tales of taking advantage of the poor souls who've wandered through their master's dungeon. Try as you might to stay unseen, the perceptive guard dogs take notice of your entry almost immediately.
+
+"What do we have here?" one of the dogs barks out. The others share hearty laughs before turning to you with weapons raised. "Looks like we've got ourselves another adventurer. How about we show this twerp a lesson or two about barging in unannounced? I've been aching for another happy fuckpet to drool on my knot."
+
+Power: 12
+Flee: 4
+
+[[Fight them->Dog Gang Fight]]
+[[Present ass->Dog Gang Present ass]]
+
+::Dog Gang Fight
+The dogs start to circle you.
+
+<<if $power >= 12>>
+  <<display "Dog Gang Win">>
+<<else>>
+  <<display "Dog Gang Lose">>
+  <<RollFlee>>
+  <<if $flee >= 4>>
+    <<display "Dog Gang Flee">>
+  <<else>>
+    <<display "Dog Gang Bad">>
+  <<endif>>
+<<endif>>
+
+::Dog Gang Win
+You beat down the dogs, and they cower on the floor. You loot all three of their bodies.
+
+<<Loot>>
+<<Loot>>
+<<Loot>>
+
+<<Proceed>>
+
+::Dog Gang Lose
+You lose the fight.
+
+::Dog Gang Flee
+You dive past the Dog Gang enemies. No looting.
+
+<<Proceed>>
+
+::Dog Gang Bad
+You get your butthole raped and then are collared and enslaved as a pet, tossed around between the three guards.
+
+BEST ENDING
+
+::Dog Gang Present ass
+You turn around and show them your ass.
+
+Ruh-roh! You were knotted! Lose 3 turns. They spank you on your ass and send you away.
+
+<<Proceed>>

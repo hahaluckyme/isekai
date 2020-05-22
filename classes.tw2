@@ -10,11 +10,30 @@ Items: Bottle of Aqua Vitae, Health Potion, Curse Restore, Butthole Ointment
 
 ::Knight
 <<Gift "Knife">>
+<<Gift "Knife">>
+<<Gift "Knife">>
+<<Gift "Knife">>
 
 <<Proceed>>
 
 ::Alchemist
+<<Gift "Book">>
+<<Gift "Strength Potions">>
+<<Gift "Curse Potion">>
+<<Gift "Aqua Vitae">>
+
+<<Proceed>>
 
 ::Thief
+<<Gift "Knife">>
+<<Gift "Lockpicks">>
+<<Gift "Smoke Bomb">>
+
+<<Proceed>>
 
 ::Bard
+<<Gift "Hemp Rope">>
+<<Gift "Knife">>
+<<Gift "Book">>
+
+<<Proceed>>

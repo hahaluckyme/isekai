@@ -51,7 +51,11 @@ macros.Loot = {
   handler: (place, macroName, params, parser) => {
     const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
     state.active.variables.inventory.push(item);
-    new Wikifier(place, "You find " + item.name);
+    if (item.power) {
+      new Wikifier(place, `You find ${item.name} (+${item.power})`);
+    } else {
+      new Wikifier(place, `You find ${item.name}`);
+    }
   },
 };
 
@@ -60,7 +64,11 @@ macros.Gift = {
     const item = ITEMS.find(i => i.name === params[0]);
     console.log(item);
     state.active.variables.inventory.push(item);
-    new Wikifier(place, "You receive " + item.name);
+    if (item.power) {
+      new Wikifier(place, `You find ${item.name} (+${item.power})`);
+    } else {
+      new Wikifier(place, `You find ${item.name}`);
+    }
   },
 };
 
@@ -76,3 +84,15 @@ macros.Power = {
     new Wikifier(place, "Power: " + power);
   },
 }
+
+macros.Inventory = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.inventory.forEach((item) => {
+      if (item.power) {
+        new Wikifier(place, `${item.name} (+${item.power})\n`);
+      } else {
+        new Wikifier(place, `${item.name}\n`);
+      }
+    });
+  },
+};

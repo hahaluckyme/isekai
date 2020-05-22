@@ -43,14 +43,6 @@ macros.Proceed = {
   },
 };
 
-macros.Inventory = {
-  handler: (place, macroName, params, parser) => {
-    state.active.variables.inventory.forEach((item) => {
-      new Wikifier(place, item.name + '\n');
-    });
-  },
-};
-
 ::StoryCaption
 Inventory:
 <<Inventory>>

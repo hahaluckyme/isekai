@@ -126,14 +126,6 @@ macros.Proceed = {
     new Wikifier(place, "[[Next Room->Palace Room]]");
   },
 };
-
-macros.Inventory = {
-  handler: (place, macroName, params, parser) => {
-    state.active.variables.inventory.forEach((item) => {
-      new Wikifier(place, item.name + '\n');
-    });
-  },
-};
 var CONSUMABLE_ITEMS, EQUIPPABLE_ITEMS, ITEMS;
 
 EQUIPPABLE_ITEMS = [
@@ -188,7 +180,11 @@ macros.Loot = {
   handler: (place, macroName, params, parser) => {
     const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
     state.active.variables.inventory.push(item);
-    new Wikifier(place, "You find " + item.name);
+    if (item.power) {
+      new Wikifier(place, `You find ${item.name} (+${item.power})`);
+    } else {
+      new Wikifier(place, `You find ${item.name}`);
+    }
   },
 };
 
@@ -197,7 +193,11 @@ macros.Gift = {
     const item = ITEMS.find(i => i.name === params[0]);
     console.log(item);
     state.active.variables.inventory.push(item);
-    new Wikifier(place, "You receive " + item.name);
+    if (item.power) {
+      new Wikifier(place, `You find ${item.name} (+${item.power})`);
+    } else {
+      new Wikifier(place, `You find ${item.name}`);
+    }
   },
 };
 
@@ -213,6 +213,18 @@ macros.Power = {
     new Wikifier(place, "Power: " + power);
   },
 }
+
+macros.Inventory = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.inventory.forEach((item) => {
+      if (item.power) {
+        new Wikifier(place, `${item.name} (+${item.power})\n`);
+      } else {
+        new Wikifier(place, `${item.name}\n`);
+      }
+    });
+  },
+};
 </script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Inventory:
 &lt;&lt;Inventory&gt;&gt;
 &lt;&lt;Power&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">&lt;&lt;set $inventory = []&gt;&gt;
@@ -226,8 +238,24 @@ Items: Bottle of Aqua Vitae, Health Potion, Curse Restore, Butthole Ointment
 [[Thief]] - Lockpicks. Smoke bombs.
 
 [[Bard]] - You're a jack of all trades.</tw-passagedata><tw-passagedata pid="4" name="Knight" tags="" position="">&lt;&lt;Gift "Knife"&gt;&gt;
+&lt;&lt;Gift "Knife"&gt;&gt;
+&lt;&lt;Gift "Knife"&gt;&gt;
+&lt;&lt;Gift "Knife"&gt;&gt;
 
-&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Alchemist" tags="" position=""></tw-passagedata><tw-passagedata pid="6" name="Thief" tags="" position=""></tw-passagedata><tw-passagedata pid="7" name="Bard" tags="" position=""></tw-passagedata><tw-passagedata pid="8" name="Palace Room" tags="" position="">You are in a decadent palace-like floor.
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Alchemist" tags="" position="">&lt;&lt;Gift "Book"&gt;&gt;
+&lt;&lt;Gift "Strength Potions"&gt;&gt;
+&lt;&lt;Gift "Curse Potion"&gt;&gt;
+&lt;&lt;Gift "Aqua Vitae"&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Thief" tags="" position="">&lt;&lt;Gift "Knife"&gt;&gt;
+&lt;&lt;Gift "Lockpicks"&gt;&gt;
+&lt;&lt;Gift "Smoke Bomb"&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Bard" tags="" position="">&lt;&lt;Gift "Hemp Rope"&gt;&gt;
+&lt;&lt;Gift "Knife"&gt;&gt;
+&lt;&lt;Gift "Book"&gt;&gt;
+
+&lt;&lt;Proceed&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Palace Room" tags="" position="">You are in a decadent palace-like floor.
 [[Example]]
 [[Dog Gang]]
 [[Ghost Library]]

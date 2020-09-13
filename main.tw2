@@ -2,6 +2,7 @@
 Isekai Hero
 
 ::Configuration [twee2]
+Twee2::build_config.story_ifid = '42d3751d-2520-4eff-9216-fbd20051112c'
 Twee2::build_config.story_format = 'SugarCube2'
 
 ::KeybindLinks [script]
@@ -38,7 +39,13 @@ macros.Proceed = {
 };
 
 ::StoryCaption
-Caption
+Strength
+Will
+Mana
+Lust
+
+::StoryIncludes
+script.tw2
 
 ::Start
 You are floating in a void, unsure of your surroundings. Where are you? Did you die?
@@ -52,140 +59,3 @@ The voice sounds feminine and sultry.
 You feel your soul being tugged in a direction at an ever-increasing speed.
 
 [[Continue|Cart]]
-
-::Cart
-
-You open your eyes. You're in a cart, being pulled down a castle hallway bricked with hewn stone. You suddenly have vague memories of the world you've just entered, which had been raided by demons and monsters that had corrupted many humans and left destruction in their wake. The humans established many adventurers guilds in order to combat the invasion, and had finally been successful in pushing back the demons and lowlives to be completely contained within the Demon Lord's domain--the former human king's castle, which you are now in.
-
-But if the menace had been mostly contained, why did they need you to save them? The cart bumps over a rock and you feel a heavy mass on your chest bouncing with the motion. You look down in shock to see that you're a woman! And you're wearing clothes that are completely obscene, with little fabric barely covering your sexual parts.
-
-"W-where am I?" you stammer out, unexpectedly hearing a very feminine voice come out of your mouth.
-
-"Oh, so you're finally awake." You hear one of the two men say to you, gruff and clearly hostile. He turns around to face you and he has nothing but utter contempt when he sees you. "Caught you in your sleep. Made it real easy for us to put the binds on."
-
-"Why?" You have no idea what you did to piss him off.
-
-"Because demons like you are nothing but a disgusting scourge, destroying our homes and seducing our men." He turns and spits on the floor.
-
-"I'm not a demon!" You suddenly realize that you are actually, in fact, a demon. You get a rush of clearer memories: you're in a succubus's body. What the hell happened? Weren't you supposed to be a hero? "I'm a human, I swear!"
-
-"Ha!" he laughs to the other man. "She really will say anything to get out of this."
-
-The shackles jingle uncomfortably and you feel acutely aware of your unfamiliar body. Your breasts heave up and down as you breathe faster, panicked. You want to go home really bad. Is this real? Are you going to be put to death or something?
-
-Your skin feels cold as you notice that you are also wearing a heavy metal collar. You recall that you should be able to cast magic, but you won't be able to with this on.
-
-Suddenly, a large explosion in front of the cart shakes the ground and knocks the bricks off the walls, scattering and kicking up a huge dust cloud. You can hear your captors shout at each other, and in the distraction, you quickly realize that you might be able to escape!
-
-You bolt out of the cart, chains clinking as they flail chaotically as you run. You don't even take the time to turn around as you turn corner after corner. Soon, you are a safe enough distance away, but you're in a completely unfamiliar place. The Demon Lord's castle.
-
-[[Continue]]
-
-::Continue
-(Select a scene, since randomization isn't here yet...)
-
-[[Forge]]
-[[Slime]]
-[[Giant Slime]]
-
-
-
-::Forge
-You stumble into a large room, with fire billowing out of a work station clearly used to shape metal. You're excited to see hammers and weapons, and immediately try to grab one.
-
-As soon as you touch it, your hand burns and you let go, crying out in pain. What was that? You recognize what it is--holy metal. You frown in disappointment, realizing this won't be able to help you at all.
-
-Unless... if you can stand the pain, you could use something to bash your chains to free your hands.
-
-[[Endure the pain and free your hands!|Forge Break Chains]]
-[[It's not worth it.|Forge Don't]]
-
-::Forge Break Chains
-You grasp a sledgehammer, fingers burning as you scream out in pain, pointing it towards the chain binding your left hand. It burns unlike anything you've ever touched before, but it's not just heat, you feel like the holy fires are singeing the tailcoats of your soul.
-
--2 Strength
-
-[[Continue]]
-
-::Forge Don't
-You shake your head, knowing that it would be hard for you to willingly hurt yourself on the holy metal. The feeling burned so intensely, hotter than any stove you could touch at home. Plus, with your newly demonized body, you don't want to risk any additional effects. You'll just have to find another way.
-
-[[Continue]]
-
-::Slime
-You continue down a hallway and see in the flickering torchlight something green on the ceiling. It appears to be a blob of slime. You've played enough video games to know that it's probably a trap or something.
-
-[[Run through as fast as you can.|Slime Run]]
-[[Cast a fire spell at it.|Slime Fireball]]
-
-::Slime Run
-You take off as fast as you can under the slime, fairly certain that it won't be able to catch you, but as you curve around to run near the walls, the slime shoots off the wall, jumping straight at you!
-
-You put up your hands to block it but the jelly-like creature splits and splashes across the entire surface of your body, completely drenching you in its goo, exploded and seemingly dead. You feel grossed out, but something else is happening--you feel your body heating up as your knees turn weak. You're somehow very turned on by this feeling.
-
--1 Will
-+4 Lust
-
-[[Continue]]
-
-::Slime Fireball
-You conjure up a small spell using muscle memory, and hurl a flaming sphere at the slime. It strikes it and you hear a hissing as the goo bubbles and falls to the ground, motionless.
-
--1 Mana
-
-[[Continue]]
-
-::Giant Slime
-You continue down a hallway, turning a corner and are shocked to see an enormous slime blocking the hallway. You really wish you could go backwards in this stupid castle.
-
-[[Fight the slime|Giant Slime Fight]]
-[[Cast a fire spell at it.|Giant Slime Fire]]
-
-::Giant Slime Fight
-You strike out at the giant slime, slashing at it with your nails. The giant slime seems completely unfazed, and simply rolls over your body, picking you up as your feet leave the ground. You hold your breath in panic, and feel the warm slime ooze around your body, the texture somehow slick and slimy at the same time.
-
-You try to swim out, but the giant slime's turbulent forces keep you in the middle, unable to escape. Your body starts to become hot and you can't help but become aroused, as you nearly run out of air. You gasp out, liquid filling your lungs and causing you to yelp in fear, but you don't feel like you're choking.
-
-Suddenly, you feel a groping on your breasts and groin as the slime washes over you, playing with your body while you are entirely encompassed in the creature.
-
-more sex happens
-
-You cum hard, barely able to move after the slime spits you out.
--3 Will
--5 Lust
-
-check for loss condition
-[[Giant Slime Bad End]]
-
-[[Continue]]
-
-::Giant Slime Bad End
-You feel your mind seize up as you constantly keep cumming, trying to scream out but silenced by the goo coating your lungs and body. You cum again and again, eventually completely lost in the pleasure as your mind finally breaks, unwilling to even attempt escaping ever again.
-
-BAD END 1: SLIME TOY
-
-::Giant Slime Fire
-You cast a small flame spell and project it forward, singeing the slime and causing it to squeal as it boils, and you run through, leaving it behind.
-
-[[Continue]]
-
-::Rope Trap
-As you walk down a hallway, you suddenly hear a click under your foot as a rope appears out of nowhere, quickly shrinking and binding your foot before you can jump out of the way. Without warning, you are flipped sideways as the rope slings you up, wrapping around your body and putting you in a very provocative and vulnerable position.
-
-[[Struggle|Rope Trap Struggle]]
-[[Burn it with a fire spell|Rope Trap Fire]]
-
-::Rope Trap Struggle
-You struggle against the bindings, but it is wrapped too tightly around you, and you can't get a good enough angle to get any part of it off of you. You pant in exhaustion as you begin to tire yourself out.
-
-A demon man eventually finds you, smirking at his prize.
-
-"Mmm, a succubus, huh? Surprised to see you in these parts." He eyeballs your collar, aware of its binding effects. "Well, surely you won't mind if I help myself to your mana. Don't worry, I'll give you a fair trade..."
-
-He grabs your hair and forces you to look up at him, your breasts swaying in the air, unbound by rope. He takes out his erect cock and slaps your face with it,
-
-
-::Rope Trap Fire
-
-
-

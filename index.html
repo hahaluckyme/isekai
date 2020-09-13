@@ -96,7 +96,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<p id="init-lacking">Apologies! You are using an <strong>outdated</strong> browser which lacks required capabilities. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<p id="init-loading">Initializing. Please wait&hellip;<br /><progress></progress></p>
 	</div>
-	<div id="store-area" hidden><tw-storydata name="Isekai Hero" startnode="2" creator="Twee2" creator-version="0.5.0" ifid="a4cf8cc7-25cd-4adf-a99c-73d34f8485f9" format="SugarCube2" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
+	<div id="store-area" hidden><tw-storydata name="Isekai Hero" startnode="2" creator="Twee2" creator-version="0.5.0" ifid="42d3751d-2520-4eff-9216-fbd20051112c" format="SugarCube2" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
 	$(document).on('keyup', (ev) => {
     if (['1', '2', '3', '4', '5'].includes(ev.key)) {
       const key = ev.key - '1';
@@ -124,7 +124,10 @@ macros.Proceed = {
     new Wikifier(place, "[[Next Room->Palace Room]]");
   },
 };
-</script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Caption</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">You are floating in a void, unsure of your surroundings. Where are you? Did you die?
+</script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Strength
+Will
+Mana
+Lust</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">You are floating in a void, unsure of your surroundings. Where are you? Did you die?
 
 "Welcome to the ether between worlds."
 
@@ -162,7 +165,8 @@ You bolt out of the cart, chains clinking as they flail chaotically as you run. 
 
 [[Forge]]
 [[Slime]]
-[[Giant Slime]]</tw-passagedata><tw-passagedata pid="5" name="Forge" tags="" position="">You stumble into a large room, with fire billowing out of a work station clearly used to shape metal. You're excited to see hammers and weapons, and immediately try to grab one.
+[[Giant Slime]]
+[[Rope Trap]]</tw-passagedata><tw-passagedata pid="5" name="Forge" tags="" position="">You stumble into a large room, with fire billowing out of a work station clearly used to shape metal. You're excited to see hammers and weapons, and immediately try to grab one.
 
 As soon as you touch it, your hand burns and you let go, crying out in pain. What was that? You recognize what it is--holy metal. You frown in disappointment, realizing this won't be able to help you at all.
 
@@ -175,24 +179,10 @@ Unless... if you can stand the pain, you could use something to bash your chains
 
 [[Continue]]</tw-passagedata><tw-passagedata pid="7" name="Forge Don't" tags="" position="">You shake your head, knowing that it would be hard for you to willingly hurt yourself on the holy metal. The feeling burned so intensely, hotter than any stove you could touch at home. Plus, with your newly demonized body, you don't want to risk any additional effects. You'll just have to find another way.
 
-[[Continue]]</tw-passagedata><tw-passagedata pid="8" name="Slime" tags="" position="">You continue down a hallway and see in the flickering torchlight something green on the ceiling. It appears to be a blob of slime. You've played enough video games to know that it's probably a trap or something.
-
-[[Run through as fast as you can.|Slime Run]]
-[[Cast a fire spell at it.|Slime Fireball]]</tw-passagedata><tw-passagedata pid="9" name="Slime Run" tags="" position="">You take off as fast as you can under the slime, fairly certain that it won't be able to catch you, but as you curve around to run near the walls, the slime shoots off the wall, jumping straight at you!
-
-You put up your hands to block it but the jelly-like creature splits and splashes across the entire surface of your body, completely drenching you in its goo, exploded and seemingly dead. You feel grossed out, but something else is happening--you feel your body heating up as your knees turn weak. You're somehow very turned on by this feeling.
-
--1 Will
-+4 Lust
-
-[[Continue]]</tw-passagedata><tw-passagedata pid="10" name="Slime Fireball" tags="" position="">You conjure up a small spell using muscle memory, and hurl a flaming sphere at the slime. It strikes it and you hear a hissing as the goo bubbles and falls to the ground, motionless.
-
--1 Mana
-
-[[Continue]]</tw-passagedata><tw-passagedata pid="11" name="Giant Slime" tags="" position="">You continue down a hallway, turning a corner and are shocked to see an enormous slime blocking the hallway. You really wish you could go backwards in this stupid castle.
+[[Continue]]</tw-passagedata><tw-passagedata pid="8" name="Giant Slime" tags="" position="">You continue down a hallway, turning a corner and are shocked to see an enormous slime blocking the hallway. You really wish you could go backwards in this stupid castle.
 
 [[Fight the slime|Giant Slime Fight]]
-[[Cast a fire spell at it.|Giant Slime Fire]]</tw-passagedata><tw-passagedata pid="12" name="Giant Slime Fight" tags="" position="">You strike out at the giant slime, slashing at it with your nails. The giant slime seems completely unfazed, and simply rolls over your body, picking you up as your feet leave the ground. You hold your breath in panic, and feel the warm slime ooze around your body, the texture somehow slick and slimy at the same time.
+[[Cast a fire spell at it.|Giant Slime Fire]]</tw-passagedata><tw-passagedata pid="9" name="Giant Slime Fight" tags="" position="">You strike out at the giant slime, slashing at it with your nails. The giant slime seems completely unfazed, and simply rolls over your body, picking you up as your feet leave the ground. You hold your breath in panic, and feel the warm slime ooze around your body, the texture somehow slick and slimy at the same time.
 
 You try to swim out, but the giant slime's turbulent forces keep you in the middle, unable to escape. Your body starts to become hot and you can't help but become aroused, as you nearly run out of air. You gasp out, liquid filling your lungs and causing you to yelp in fear, but you don't feel like you're choking.
 
@@ -207,20 +197,34 @@ You cum hard, barely able to move after the slime spits you out.
 check for loss condition
 [[Giant Slime Bad End]]
 
-[[Continue]]</tw-passagedata><tw-passagedata pid="13" name="Giant Slime Bad End" tags="" position="">You feel your mind seize up as you constantly keep cumming, trying to scream out but silenced by the goo coating your lungs and body. You cum again and again, eventually completely lost in the pleasure as your mind finally breaks, unwilling to even attempt escaping ever again.
+[[Continue]]</tw-passagedata><tw-passagedata pid="10" name="Giant Slime Bad End" tags="" position="">You feel your mind seize up as you constantly keep cumming, trying to scream out but silenced by the goo coating your lungs and body. You cum again and again, eventually completely lost in the pleasure as your mind finally breaks, unwilling to even attempt escaping ever again.
 
-BAD END 1: SLIME TOY</tw-passagedata><tw-passagedata pid="14" name="Giant Slime Fire" tags="" position="">You cast a small flame spell and project it forward, singeing the slime and causing it to squeal as it boils, and you run through, leaving it behind.
+BAD END 1: SLIME TOY</tw-passagedata><tw-passagedata pid="11" name="Giant Slime Fire" tags="" position="">You cast a small flame spell and project it forward, singeing the slime and causing it to squeal as it boils, and you run through, leaving it behind.
 
-[[Continue]]</tw-passagedata><tw-passagedata pid="15" name="Rope Trap" tags="" position="">As you walk down a hallway, you suddenly hear a click under your foot as a rope appears out of nowhere, quickly shrinking and binding your foot before you can jump out of the way. Without warning, you are flipped sideways as the rope slings you up, wrapping around your body and putting you in a very provocative and vulnerable position.
+[[Continue]]</tw-passagedata><tw-passagedata pid="12" name="Rope Trap" tags="" position="">As you walk down a hallway, you suddenly hear a click under your foot as a rope appears out of nowhere, quickly shrinking and binding your foot before you can jump out of the way. Without warning, you are flipped sideways as the rope slings you up, wrapping around your body and putting you in a very provocative and vulnerable position.
 
 [[Struggle|Rope Trap Struggle]]
-[[Burn it with a fire spell|Rope Trap Fire]]</tw-passagedata><tw-passagedata pid="16" name="Rope Trap Struggle" tags="" position="">You struggle against the bindings, but it is wrapped too tightly around you, and you can't get a good enough angle to get any part of it off of you. You pant in exhaustion as you begin to tire yourself out.
+[[Burn it with a fire spell|Rope Trap Fire]]</tw-passagedata><tw-passagedata pid="13" name="Rope Trap Struggle" tags="" position="">You struggle against the bindings, but it is wrapped too tightly around you, and you can't get a good enough angle to get any part of it off of you. You pant in exhaustion as you begin to tire yourself out.
 
 A demon man eventually finds you, smirking at his prize.
 
 "Mmm, a succubus, huh? Surprised to see you in these parts." He eyeballs your collar, aware of its binding effects. "Well, surely you won't mind if I help myself to your mana. Don't worry, I'll give you a fair trade..."
 
-He grabs your hair and forces you to look up at him, your breasts swaying in the air, unbound by rope. He takes out his erect cock and slaps your face with it,</tw-passagedata><tw-passagedata pid="17" name="Rope Trap Fire" tags="" position=""></tw-passagedata></tw-storydata></div>
+He grabs your hair and forces you to look up at him, your breasts swaying in the air, unbound by rope. He takes out his erect cock and slaps your face with it,</tw-passagedata><tw-passagedata pid="14" name="Rope Trap Fire" tags="" position=""></tw-passagedata><tw-passagedata pid="15" name="Slime" tags="" position="">You continue down a hallway and see in the flickering torchlight something green on the ceiling. It appears to be a blob of slime. You've played enough video games to know that it's probably a trap or something.
+
+[[Run through as fast as you can.|Slime Run]]
+[[Cast a fire spell at it.|Slime Fireball]]</tw-passagedata><tw-passagedata pid="16" name="Slime Run" tags="" position="">You take off as fast as you can under the slime, fairly certain that it won't be able to catch you, but as you curve around to run near the walls, the slime shoots off the wall, jumping straight at you!
+
+You put up your hands to block it but the jelly-like creature splits and splashes across the entire surface of your body, completely drenching you in its goo, exploded and seemingly dead. You feel grossed out, but something else is happening--you feel your body heating up as your knees turn weak. You're somehow very turned on by this feeling.
+
+-1 Will
++4 Lust
+
+[[Continue]]</tw-passagedata><tw-passagedata pid="17" name="Slime Fireball" tags="" position="">You conjure up a small spell using muscle memory, and hurl a flaming sphere at the slime. It strikes it and you hear a hissing as the goo bubbles and falls to the ground, motionless.
+
+-1 Mana
+
+[[Continue]]</tw-passagedata></tw-storydata></div>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS
 

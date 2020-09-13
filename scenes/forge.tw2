@@ -1,0 +1,21 @@
+::Forge
+You stumble into a large room, with fire billowing out of a work station clearly used to shape metal. You're excited to see hammers and weapons, and immediately try to grab one.
+
+As soon as you touch it, your hand burns and you let go, crying out in pain. What was that? You recognize what it is--holy metal. You frown in disappointment, realizing this won't be able to help you at all.
+
+Unless... if you can stand the pain, you could use something to bash your chains to free your hands.
+
+[[Endure the pain and free your hands!|Forge Break Chains]]
+[[It's not worth it.|Forge Don't]]
+
+::Forge Break Chains
+You grasp a sledgehammer, fingers burning as you scream out in pain, pointing it towards the chain binding your left hand. It burns unlike anything you've ever touched before, but it's not just heat, you feel like the holy fires are singeing the tailcoats of your soul.
+
+-2 Strength
+
+[[Continue]]
+
+::Forge Don't
+You shake your head, knowing that it would be hard for you to willingly hurt yourself on the holy metal. The feeling burned so intensely, hotter than any stove you could touch at home. Plus, with your newly demonized body, you don't want to risk any additional effects. You'll just have to find another way.
+
+[[Continue]]

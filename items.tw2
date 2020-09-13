@@ -11,17 +11,26 @@ EQUIPPABLE_ITEMS = [
     slot: "1 hand"
     desc: "Good for stabbing and throwing!"
   ,
+    name: "Dagger"
+    power: 1
+    slot: "1 hand"
+    desc: "Good for dagging!"
+  ,
     name: "Book"
     power: 1
     slot: "1 hand"
     desc: "A tome of knowledge."
   ,
-    name: "Lockpicks"
+    name: "Lockpick"
     slot: "1 hand"
     desc: "Opens a locked chest. 50% chance of breaking after use."
   ,
     name: "Hemp Rope"
     power: 1
+    desc: "Smells like farm."
+  ,
+    name: "Cloak"
+    power: 2
     desc: "Smells like farm."
   ,
 ]
@@ -51,24 +60,31 @@ macros.Loot = {
   handler: (place, macroName, params, parser) => {
     const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
     state.active.variables.inventory.push(item);
-    if (item.power) {
-      new Wikifier(place, `You find ${item.name} (+${item.power})`);
-    } else {
-      new Wikifier(place, `You find ${item.name}`);
-    }
+    new Wikifier(
+      place,
+      `You find ${item.name}` +
+      item.power ? ` (+${item.power})` : '' +
+      item.consumable ? ' (+C)' : ''
+    );
   },
 };
 
 macros.Gift = {
   handler: (place, macroName, params, parser) => {
-    const item = ITEMS.find(i => i.name === params[0]);
-    console.log(item);
-    state.active.variables.inventory.push(item);
-    if (item.power) {
-      new Wikifier(place, `You find ${item.name} (+${item.power})`);
-    } else {
-      new Wikifier(place, `You find ${item.name}`);
+    const name = params[0];
+    let item = ITEMS.find(i => i.name === name);
+    if (!item) {
+      item = {
+        name,
+      };
     }
+    state.active.variables.inventory.push(item);
+    new Wikifier(
+      place,
+      `You find ${item.name}` +
+      (item.power ? ` (+${item.power})` : '') +
+      (item.consumable ? ' (C)' : '')
+    );
   },
 };
 
@@ -88,11 +104,13 @@ macros.Power = {
 macros.Inventory = {
   handler: (place, macroName, params, parser) => {
     state.active.variables.inventory.forEach((item) => {
-      if (item.power) {
-        new Wikifier(place, `${item.name} (+${item.power})\n`);
-      } else {
-        new Wikifier(place, `${item.name}\n`);
-      }
+      new Wikifier(
+        place,
+        `${item.name}` +
+        (item.power ? ` (+${item.power})` : '') +
+        (item.consumable ? ' (C)' : '')
+        + '\n'
+      );
     });
   },
 };

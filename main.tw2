@@ -5,6 +5,9 @@ Isekai Hero
 Twee2::build_config.story_ifid = '42d3751d-2520-4eff-9216-fbd20051112c'
 Twee2::build_config.story_format = 'SugarCube2'
 
+::StoryIncludes
+script.tw2
+
 ::KeybindLinks [script]
 (() => {
 	$(document).on('keyup', (ev) => {
@@ -43,9 +46,6 @@ Strength
 Will
 Mana
 Lust
-
-::StoryIncludes
-script.tw2
 
 ::Start
 You are floating in a void, unsure of your surroundings. Where are you? Did you die?

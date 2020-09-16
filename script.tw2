@@ -33,9 +33,11 @@ You bolt out of the cart, chains clinking as they flail chaotically as you run. 
 [[Slime]]
 [[Giant Slime]]
 [[Rope Trap]]
+[[Tentacle Trap]]
 
 ::StoryIncludes
 scenes/forge.tw2
 scenes/giant_slime.tw2
 scenes/rope_trap.tw2
 scenes/slime.tw2
+scenes/tentacle_trap.tw2

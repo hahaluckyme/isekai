@@ -26,26 +26,57 @@ script.tw2
 })();
 
 ::MainMacros [script]
-
-macros.RollFlee = {
+macros.Roll = {
   handler: (place, macroName, params, parser) => {
     const roll = Math.floor(Math.random() * 6) + 1;
     state.active.variables.flee = roll;
-    new Wikifier(place, "You roll a " + roll);
+    new Wikifier(place, "<span style='color: pink'>[d6] You roll a " + roll + "</span>");
   },
 };
 
-macros.Proceed = {
+state.active.variables.strength = 5;
+state.active.variables.will = 5;
+state.active.variables.mana = 5;
+state.active.variables.lust = 0;
+state.active.variables.dead = false;
+
+macros.StrengthDown = {
   handler: (place, macroName, params, parser) => {
-    new Wikifier(place, "[[Next Room->Palace Room]]");
+    state.active.variables.strength -= params[0];
+    if (state.active.variables.strength <= 0) {
+      state.active.variables.dead = true;
+    }
+    new Wikifier(place, `-${params[0]} Strength`);
   },
 };
+macros.WillDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.will -= params[0];
+    if (state.active.variables.will <= 0) {
+      state.active.variables.dead = true;
+    }
+    new Wikifier(place, `-${params[0]} Will`);
+  },
+};
+macros.ManaDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.mana -= params[0];
+    new Wikifier(place, `-${params[0]} Mana`);
+  },
+};
+macros.LustDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.lust -= params[0];
+    new Wikifier(place, `-${params[0]} Lust`);
+  },
+};
+
 
 ::StoryCaption
-Strength
-Will
-Mana
-Lust
+Strength: $strength
+Will: $will
+Mana: $mana
+Lust: $lust
 
 ::Start
 You are floating in a void, unsure of your surroundings. Where are you? Did you die?

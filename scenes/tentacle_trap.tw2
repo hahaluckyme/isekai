@@ -2,9 +2,17 @@
 You come across a strange set of runes etched upon the floor. Despite there being no signs of any disturbances in this part of the dungeon, the runes appear fresh and glow with an eldritch power. They are quite obvious to your demonic eyes, and you wonder just what their purpose might be. Examining closer, you find that the runes are wavy and long, like waves or flowing water. They are simultaneously simplistic and intricate, easy to see, yet hard to comprehend. Whatever their purpose is, it is not immediately apparent.
 What is apparent, however, is that these markings cover the walkway, and the distance is quite far, making traversing this place quite difficult if this is some form of trap.
 
-[[Attempt to Disarm Failure|Tentacle Trap Disarm Failure]]
-[[Attempt to Disarm Success|Tentacle Trap Disarm Success]]
+[[Attempt to Disarm|Tentacle Trap Disarm]]
 [[Just walk across carefully|Tentacle Trap Walk Across]]
+
+::Tentacle Trap Disarm
+<<Roll>>
+<<if $flee >= 4>>
+  <<display "Tentacle Trap Disarm Success">>
+<<else>>
+  <<display "Tentacle Trap Disarm Failure">>
+<<endif>>
+
 
 ::Tentacle Trap Disarm Success
 The knowledge you’ve gained on arcane traps is enough to let you know that you should be able to deactivate the trap with little issue. You take your time, manipulating the ether around you until you feel the thrum of magic disappear, and the light fades from the runes. You hop up and walk across, unhindered by whatever insidious design was here.
@@ -16,16 +24,18 @@ Magical traps aren’t exactly your forte, but the best way to disarm one is to 
 
 You toss the rock, and it bounces once. Immediately, the runes glow and they come to life, springing from the wall as many tentacles that wrap around the rock and crush it into rubble. But now, they are wriggling and searching madly for you. There’s only one way to get across, and it’s now or never. You rush through, the tentacles grabbing at your arms and legs as you rush across the path and towards the other side!
 
-{insert damage here}
+<<StrengthDown 3>>
 
+<<if $dead>>
 [[Bad End|Tentacle Trap Bad End]]
-
+<<else>>
 [[Continue]]
+<<endif>>
 
 ::Tentacle Trap Walk Across
 There is nothing else that you can do, aside from make your way across, but once your toes first touch the area marked with the power of magic, the runes leap to life, becoming lashing, dripping tentacles that spring from the walls, floor, and ceiling. They immedately lash out at you while you attempt to run to the other side, grabbing at your arms and legs with stinging, suctioned grasps!
 
-{insert damage here}
+<<StrengthDown 2>>
 
 [[Continue]]
 

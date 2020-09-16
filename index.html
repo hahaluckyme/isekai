@@ -111,23 +111,54 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
     }
 	});
 })();
-macros.RollFlee = {
+macros.Roll = {
   handler: (place, macroName, params, parser) => {
     const roll = Math.floor(Math.random() * 6) + 1;
     state.active.variables.flee = roll;
-    new Wikifier(place, "You roll a " + roll);
+    new Wikifier(place, "<span style='color: pink'>[d6] You roll a " + roll + "</span>");
   },
 };
 
-macros.Proceed = {
+state.active.variables.strength = 5;
+state.active.variables.will = 5;
+state.active.variables.mana = 5;
+state.active.variables.lust = 0;
+state.active.variables.dead = false;
+
+macros.StrengthDown = {
   handler: (place, macroName, params, parser) => {
-    new Wikifier(place, "[[Next Room->Palace Room]]");
+    state.active.variables.strength -= params[0];
+    if (state.active.variables.strength <= 0) {
+      state.active.variables.dead = true;
+    }
+    new Wikifier(place, `-${params[0]} Strength`);
   },
 };
-</script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Strength
-Will
-Mana
-Lust</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">You are floating in a void, unsure of your surroundings. Where are you? Did you die?
+macros.WillDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.will -= params[0];
+    if (state.active.variables.will <= 0) {
+      state.active.variables.dead = true;
+    }
+    new Wikifier(place, `-${params[0]} Will`);
+  },
+};
+macros.ManaDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.mana -= params[0];
+    new Wikifier(place, `-${params[0]} Mana`);
+  },
+};
+macros.LustDown = {
+  handler: (place, macroName, params, parser) => {
+    state.active.variables.lust -= params[0];
+    new Wikifier(place, `-${params[0]} Lust`);
+  },
+};
+</script><tw-passagedata pid="1" name="StoryCaption" tags="" position="">Strength: $strength
+Will: $will
+Mana: $mana
+Lust: $lust</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="">You are floating in a void, unsure of your surroundings. Where are you? Did you die?
 
 "Welcome to the ether between worlds."
 
@@ -228,23 +259,29 @@ You put up your hands to block it but the jelly-like creature splits and splashe
 [[Continue]]</tw-passagedata><tw-passagedata pid="18" name="Tentacle Trap" tags="" position="">You come across a strange set of runes etched upon the floor. Despite there being no signs of any disturbances in this part of the dungeon, the runes appear fresh and glow with an eldritch power. They are quite obvious to your demonic eyes, and you wonder just what their purpose might be. Examining closer, you find that the runes are wavy and long, like waves or flowing water. They are simultaneously simplistic and intricate, easy to see, yet hard to comprehend. Whatever their purpose is, it is not immediately apparent.
 What is apparent, however, is that these markings cover the walkway, and the distance is quite far, making traversing this place quite difficult if this is some form of trap.
 
-[[Attempt to Disarm Failure|Tentacle Trap Disarm Failure]]
-[[Attempt to Disarm Success|Tentacle Trap Disarm Success]]
-[[Just walk across carefully|Tentacle Trap Walk Across]]</tw-passagedata><tw-passagedata pid="19" name="Tentacle Trap Disarm Success" tags="" position="">The knowledge you’ve gained on arcane traps is enough to let you know that you should be able to deactivate the trap with little issue. You take your time, manipulating the ether around you until you feel the thrum of magic disappear, and the light fades from the runes. You hop up and walk across, unhindered by whatever insidious design was here.
+[[Attempt to Disarm|Tentacle Trap Disarm]]
+[[Just walk across carefully|Tentacle Trap Walk Across]]</tw-passagedata><tw-passagedata pid="19" name="Tentacle Trap Disarm" tags="" position="">&lt;&lt;Roll&gt;&gt;
+&lt;&lt;if $flee &gt;= 4&gt;&gt;
+  &lt;&lt;display "Tentacle Trap Disarm Success"&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;&lt;display "Tentacle Trap Disarm Failure"&gt;&gt;
+&lt;&lt;endif&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Tentacle Trap Disarm Success" tags="" position="">The knowledge you’ve gained on arcane traps is enough to let you know that you should be able to deactivate the trap with little issue. You take your time, manipulating the ether around you until you feel the thrum of magic disappear, and the light fades from the runes. You hop up and walk across, unhindered by whatever insidious design was here.
 
-[[Continue]]</tw-passagedata><tw-passagedata pid="20" name="Tentacle Trap Disarm Failure" tags="" position="">Magical traps aren’t exactly your forte, but the best way to disarm one is to spring one. You look across the ground and discover a rock. Surely, that will be enough. Picking it up, you weigh it in your hand. It should be heavy enough to activate the trap if it is looking for living things.
+[[Continue]]</tw-passagedata><tw-passagedata pid="21" name="Tentacle Trap Disarm Failure" tags="" position="">Magical traps aren’t exactly your forte, but the best way to disarm one is to spring one. You look across the ground and discover a rock. Surely, that will be enough. Picking it up, you weigh it in your hand. It should be heavy enough to activate the trap if it is looking for living things.
 
 You toss the rock, and it bounces once. Immediately, the runes glow and they come to life, springing from the wall as many tentacles that wrap around the rock and crush it into rubble. But now, they are wriggling and searching madly for you. There’s only one way to get across, and it’s now or never. You rush through, the tentacles grabbing at your arms and legs as you rush across the path and towards the other side!
 
-{insert damage here}
+&lt;&lt;StrengthDown 3&gt;&gt;
 
+&lt;&lt;if $dead&gt;&gt;
 [[Bad End|Tentacle Trap Bad End]]
+&lt;&lt;else&gt;&gt;
+[[Continue]]
+&lt;&lt;endif&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Tentacle Trap Walk Across" tags="" position="">There is nothing else that you can do, aside from make your way across, but once your toes first touch the area marked with the power of magic, the runes leap to life, becoming lashing, dripping tentacles that spring from the walls, floor, and ceiling. They immedately lash out at you while you attempt to run to the other side, grabbing at your arms and legs with stinging, suctioned grasps!
 
-[[Continue]]</tw-passagedata><tw-passagedata pid="21" name="Tentacle Trap Walk Across" tags="" position="">There is nothing else that you can do, aside from make your way across, but once your toes first touch the area marked with the power of magic, the runes leap to life, becoming lashing, dripping tentacles that spring from the walls, floor, and ceiling. They immedately lash out at you while you attempt to run to the other side, grabbing at your arms and legs with stinging, suctioned grasps!
+&lt;&lt;StrengthDown 2&gt;&gt;
 
-{insert damage here}
-
-[[Continue]]</tw-passagedata><tw-passagedata pid="22" name="Tentacle Trap Bad End" tags="" position="">Spent from your exertion and caught by surprise by the tentacles, you cannot break free as they wrap around your arms, lifting them up over your head. You cannot run as they coil and split your legs apart, keeping you suspended in the middle of the trap. While many hold onto you, many more slither towards you. A pair from below twists together to a larger, phallic shape and shove themselves right up into your sex, filling you with writhing and wriggling nastiness.
+[[Continue]]</tw-passagedata><tw-passagedata pid="23" name="Tentacle Trap Bad End" tags="" position="">Spent from your exertion and caught by surprise by the tentacles, you cannot break free as they wrap around your arms, lifting them up over your head. You cannot run as they coil and split your legs apart, keeping you suspended in the middle of the trap. While many hold onto you, many more slither towards you. A pair from below twists together to a larger, phallic shape and shove themselves right up into your sex, filling you with writhing and wriggling nastiness.
 
 You gasp from the surprise insertion, only for another set of tentacles to shove themselves into your mouth. They slide down your throat, forcing your head back. Shuddering, your body acclimates to the invasion of your flesh, only for a third set to find themselves pressing in through your exit, filling you from three orifaces.
 

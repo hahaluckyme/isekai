@@ -14,7 +14,6 @@ What is apparent, however, is that these markings cover the walkway, and the dis
   <<display "Tentacle Trap Disarm Failure">>
 <<endif>>
 
-
 ::Tentacle Trap Disarm Success
 The knowledge you’ve gained on arcane traps is enough to let you know that you should be able to deactivate the trap with little issue. You take your time, manipulating the ether around you until you feel the thrum of magic disappear, and the light fades from the runes. You hop up and walk across, unhindered by whatever insidious design was here.
 
@@ -38,7 +37,11 @@ There is nothing else that you can do, aside from make your way across, but once
 
 <<StrengthDown 2>>
 
+<<if $dead>>
+[[Bad End|Tentacle Trap Bad End]]
+<<else>>
 [[Continue]]
+<<endif>>
 
 ::Tentacle Trap Magic Eye
 You concentrate on your mana, focusing inward to see the magic inherent in the runes. Your magic drains as you gain an understanding of the working of this arcane device. It appears that this is a summoning portal, used by some spell-casters to bring forth the tentacles of some otherworldly beast to use as a guardian and to drain any sexual creatures of their power. Quite insidious, especially if someone was expecting a succubus.  Probing further, you find the inner workings of the incantation and find its weakness. With a burst of magical energy, you unleash your mana, causing the runes to lose their glow.

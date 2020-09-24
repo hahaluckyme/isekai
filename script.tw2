@@ -29,6 +29,7 @@ You bolt out of the cart, chains clinking as they flail chaotically as you run. 
 ::Continue
 (Select a scene, since randomization isn't here yet...)
 
+[[First Encounter]]
 [[Forge]]
 [[Slime]]
 [[Giant Slime]]
@@ -36,6 +37,7 @@ You bolt out of the cart, chains clinking as they flail chaotically as you run. 
 [[Tentacle Trap]]
 
 ::StoryIncludes
+scenes/first_encounter.tw2
 scenes/forge.tw2
 scenes/giant_slime.tw2
 scenes/rope_trap.tw2

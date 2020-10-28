@@ -71,6 +71,13 @@ macros.LustDown = {
   },
 };
 
+::Style [stylesheet]
+br {
+  content: "";
+  margin: 1em;
+  display: block;
+  font-size: 100%;
+}
 
 ::StoryCaption
 Strength: $strength

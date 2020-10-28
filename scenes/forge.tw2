@@ -1,8 +1,6 @@
 ::Forge
 You stumble into a large room, with fire billowing out of a work station clearly used to shape metal. You're excited to see hammers and weapons, and immediately try to grab one.
-
 As soon as you touch it, your hand burns and you let go, crying out in pain. What was that? You recognize what it is--holy metal. You frown in disappointment, realizing this won't be able to help you at all.
-
 Unless... if you can stand the pain, you could use something to bash your chains to free your hands.
 
 [[Endure the pain and free your hands!|Forge Break Chains]]
@@ -10,7 +8,6 @@ Unless... if you can stand the pain, you could use something to bash your chains
 
 ::Forge Break Chains
 You grasp a sledgehammer, fingers burning as you scream out in pain, pointing it towards the chain binding your left hand. It burns unlike anything you've ever touched before, but it's not just heat, you feel like the holy fires are singeing the tailcoats of your soul.
-
 -2 Strength
 
 [[Continue]]
